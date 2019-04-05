@@ -30,7 +30,7 @@ public class Turtle {
 	private List<TurtleCommand> commands;
 	private Gson gson = new Gson();
 
-	public static Turtle CreateTurtle(String[] args) throws ParseException {
+	public static Turtle CreateTurtle(String[] args) {
 		String turtle_name = null;
 		String host = "127.0.0.1";
 		int port = 3000;
@@ -44,23 +44,30 @@ public class Turtle {
 		options.addOption(new Option("h", "help", false, "show this message and exit."));
 
 		CommandLineParser parser = new DefaultParser();
-		CommandLine cmd = parser.parse(options, args);
-		if (cmd.hasOption("n")) {
-			turtle_name = cmd.getOptionValue("n");
-		}
-		if (cmd.hasOption("p")) {
-			port = Integer.parseInt(cmd.getOptionValue("p"));
-		}
-		if (cmd.hasOption("h")) {
-			show_help = true;
-		}
+		CommandLine cmd;
+		try {
+			cmd = parser.parse(options, args);
+			if (cmd.hasOption("n")) {
+				turtle_name = cmd.getOptionValue("n");
+			}
+			if (cmd.hasOption("p")) {
+				port = Integer.parseInt(cmd.getOptionValue("p"));
+			}
+			if (cmd.hasOption("h")) {
+				show_help = true;
+			}
 
-		if (show_help) {
-			ShowHelp();
+			if (show_help) {
+				ShowHelp();
+				return null;
+			}
+
+			return new Turtle(turtle_name, host, port, bulk, bulkLimit);
+		} catch (ParseException e) {
+			System.out.println("Error parsing command line -> " + e.getMessage());
 			return null;
 		}
 
-		return new Turtle(turtle_name, host, port, bulk, bulkLimit);
 	}
 
 	static void ShowHelp() {
@@ -93,10 +100,9 @@ public class Turtle {
 			this.bulkLimit = 100;
 		}
 		this.commands = new ArrayList<TurtleCommand>();
-		// if (this.name == null)
-		// {
-		// this.Init();
-		// }
+		if (this.name == null) {
+			this.init(250, 250);
+		}
 	}
 
 	private TurtleState turtleRequest(String cmd, List<Pair<String, Object>> args, boolean is_obj) {
