@@ -126,11 +126,11 @@ public class Turtle {
 			this.commands.add(command);
 			if ((this.commands.size() >= this.bulkLimit) || (cmd == "stop") || (cmd == "state")) {
 				HttpRequestFactory requestFactory = new NetHttpTransport().createRequestFactory();
-				System.out.println("Draining commands " + this.commands.size());
+				//System.out.println("Draining commands " + this.commands.size());
 				String json = gson.toJson(this.commands);
-				System.out.println(json);
+				//System.out.println(json);
 				GenericUrl url = new GenericUrl(this.turtleUrl + "/turtle/" + this.name + "/commands");
-				System.out.println(url);
+				//System.out.println(url);
 				try {
 					HttpRequest request = requestFactory.buildPostRequest(url,
 							new ByteArrayContent("application/json", json.getBytes()));
@@ -151,8 +151,7 @@ public class Turtle {
 					this.commands.clear();
 					return t;
 				} catch (Exception e) {
-					System.out.println("\nException Caught!");
-					System.out.println("Message : " + e.getMessage());
+					System.out.println("Error calling Turtle Server, Message : " + e.getMessage());
 				}
 			}
 		} else {
@@ -177,7 +176,7 @@ public class Turtle {
 				}
 			}
 			try {
-				System.out.println(request_url);
+				// System.out.println(request_url);
 				HttpRequestFactory requestFactory = new NetHttpTransport().createRequestFactory();
 				HttpRequest request = requestFactory.buildGetRequest(new GenericUrl(this.turtleUrl + request_url));
 				HttpResponse response = request.execute();
@@ -196,8 +195,7 @@ public class Turtle {
 				TurtleState t = gson.fromJson(responseText, TurtleState.class);
 				return t;
 			} catch (Exception e) {
-				System.out.println("\nException Caught!");
-				System.out.println("Message : " + e.getMessage());
+				System.out.println("Error calling Turtle Server, Message : " + e.getMessage());
 			}
 		}
 		return null;
