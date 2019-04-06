@@ -2,7 +2,6 @@ language: java
 script:
 - mvn test -B
 - mvn package -B
-- pwd
 deploy:
   provider: releases
   api_key:
