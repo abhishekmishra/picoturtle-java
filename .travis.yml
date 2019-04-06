@@ -7,7 +7,7 @@ deploy:
   api_key:
     secure: GuRHAjxxnBoLcqQXdSOBfijuNJw6Q+LhXdy9IlOTa+mf//9MMOsyu+qjSXPoDlnuGl7QhBc7i1SjtYEl7q2gsutTqKHUVq5yXpg/VVP6s59rnxWFTxh9aFG9mubbT09APdV2/2m1FPbZCbjR4pMzP264jE5vNP2Xrd3krRLa2RyfIQjUhCF0kfpfLx4YguR5vlHPT9S6ZuqiJOqPn8Y5LMq00jLVrCEQHV0O3/V6l8ElHY1xlEZ0fU4BsI6PEeLznp++WZkRpTMqWLDxuu8x6Oxxg0/g/CdNkrnL7rFdJM5rB+3ZQi67mEV2NaJWScVxtN1Qmxz0AJQLrOCXgutH0IpSzfP23vad3VP4xiNF+VhoeQvlqFw9gIK9+dEOYx544Yiiot+We6GFmP4KHLYQnE6qDSOEERtRkJ4GsipcenRUQ7ADA3sLc34RIDZd235X8CpUtPBTkdDr+ob8cW/Kx+5hrRS5DWNZvdZrAG8qey5lBuXRvdKe5FU2po/TuZVL1X6pkn9batdqyHi3hX1urG5mvqxEwjEmJwFD1K6Ma8mrqrRTWKnkBDsqzrGwtxxh+d/2wvCdA6c4jbjPL+Ma0og5KHigOZ3fsI1cTB63Yxn2ZaDpBNRneXB8LWUwiBbAEWbKNHUM9MBAGYAF1ayuNyGnS29Wv9uNTHA2QChExek=
   file_glob: true
-  file: "./target/picoturtle-java-*-with-dependencies.jar"
+  file: "./target/picoturtle-java-*"
   on:
     tags: true
     repo: abhishekmishra/picoturtle-java
