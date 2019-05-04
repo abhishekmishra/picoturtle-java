@@ -10,6 +10,7 @@ public class TurtleState {
     public String name;
     public int last;
     public String font_str;
+    public Dimension canvas_size;
 
     public TurtleState()
     {

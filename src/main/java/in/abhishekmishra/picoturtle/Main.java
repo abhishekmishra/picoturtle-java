@@ -11,14 +11,17 @@ public class Main {
 	public static void main(String[] args) throws IOException, URISyntaxException {
 		Gson gson = new Gson();
 		Turtle t = new Turtle(null, null, -1, true, 1);
-		t.init(250, 250);
 		System.out.println("Created Turtle with name -> " + t.name);
+		t.canvas_size(250, 250);
+		t.penup();
+		t.setpos(125, 125);
 		t.pendown();
 		t.pencolour(128, 128, 0);
 		for (int i = 0; i < 4; i++) {
 			t.forward(100);
 			t.right(90);
 		}
+		t.export_img("java-picoturtle-test.png");
 		TurtleState s = t.stop();
 		System.out.println(gson.toJson(s, TurtleState.class));
 		System.out.println(s.colour.r);

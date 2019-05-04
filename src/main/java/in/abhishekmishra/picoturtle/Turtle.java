@@ -332,4 +332,19 @@ public class Turtle {
 
 		return turtleRequest("pencolour", args, true);
 	}
+
+	public TurtleState canvas_size(int width, int height) {
+		List<Pair<String, Object>> args = new ArrayList<Pair<String, Object>>();
+		args.add(new Pair<String, Object>("width", width));
+		args.add(new Pair<String, Object>("height", height));
+
+		return turtleRequest("canvas_size", args, false);
+	}
+
+	public TurtleState export_img(String filename) {
+		List<Pair<String, Object>> args = new ArrayList<Pair<String, Object>>();
+		args.add(new Pair<String, Object>("filename", filename));
+
+		return turtleRequest("export_img", args, false);
+	}
 }
